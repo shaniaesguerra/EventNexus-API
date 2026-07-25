@@ -1,0 +1,31 @@
+{
+  "name": "eventnexus-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaniaesguerra/EventNexus-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/shaniaesguerra/EventNexus-API/issues"
+  },
+  "homepage": "https://github.com/shaniaesguerra/EventNexus-API#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "mongodb": "^7.5.0",
+    "mongoose": "^9.8.0",
+    "passport": "^0.7.0",
+    "swagger-autogen": "^2.9.2",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
