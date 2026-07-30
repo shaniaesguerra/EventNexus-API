@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const connectDB = async () => {
-  const mongoUri = process.env.MONGODB_URI || process.env.PORT;
+  const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
 
   if (!mongoUri) {
-    console.warn('MongoDB connection string is not set. Add MONGODB_URI to your .env file to connect to MongoDB to proceed.');
+    console.warn('MongoDB connection string is not set. Add MONGO_URI or MONGODB_URI to your .env file to connect to MongoDB.');
     return false;
   }
 
