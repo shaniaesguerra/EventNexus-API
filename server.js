@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/db');
 const eventsRouter = require('./routes/events');
+const venuesRouter = require('./routes/venues');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,6 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/events', eventsRouter);
+app.use('/venues', venuesRouter);
 
 const startServer = async () => {
   await connectDB();

@@ -13,7 +13,7 @@ const createVenue = async (req, res) => {
 };
 
 // GET /venues
-const getVenue = async (req, res) => {
+const getVenues = async (req, res) => {
     try {
         const venues = await Venue.find();
         res.status(200).json(venues);
@@ -83,7 +83,7 @@ const deleteVenue = async (req, res) => {
 
 module.exports = {
     createVenue,
-    getVenue,
+    getVenues,
     getVenueById,
     updateVenue,
     deleteVenue
