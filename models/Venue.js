@@ -1,4 +1,4 @@
-import { validateVenueServices } from '../middleware/validate';
+const { validateVenueServices } = require('../middleware/validate');
 const mongoose = require('mongoose');
 
 //Venue Schema
