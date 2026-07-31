@@ -1,3 +1,4 @@
+import { validateVenueServices } from '../middleware/validate';
 const mongoose = require('mongoose');
 
 //Venue Schema
@@ -18,7 +19,11 @@ const venueSchema = new mongoose.Schema({
     services: {
         type: [String],
         enum: ["food", "parking", "WIFI"],
-        default:[]
+        default: [],
+        validate: {
+            validator: validateVenueServices,
+            message: "Services must only include any combination of the three: 'food', 'parking', 'WIFI'"
+        }
     },
     capacity: {
         type: Number,
