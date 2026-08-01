@@ -1,11 +1,18 @@
 const express = require('express');
-const router = express.Router();
-const venueController = require('../controllers/venues');
+const {
+  getAllVenues,
+  getVenueById,
+  createVenue,
+  updateVenue,
+  deleteVenue,
+} = require('../controllers/venues');
 
-router.post("/", venueController.createVenue);
-router.get('/', venueController.getVenues);
-router.get("/:id", venueController.getVenueById);
-router.put("/:id", venueController.updateVenue);
-router.delete("/:id", venueController.deleteVenue);
+const router = express.Router();
+
+router.get('/', getAllVenues);
+router.get('/:id', getVenueById);
+router.post('/', createVenue);
+router.put('/:id', updateVenue);
+router.delete('/:id', deleteVenue);
 
 module.exports = router;

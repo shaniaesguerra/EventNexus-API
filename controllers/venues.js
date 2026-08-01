@@ -1,90 +1,86 @@
 const mongoose = require('mongoose');
 const Venue = require('../models/Venue');
-const { isValidObjectId } = require('../middleware/validate');
 
-// POST /venues
-const createVenue = async (req, res) => {
-    try {
-        const venue = await Venue.create(req.body);
-        res.status(201).json(venue);
-    } catch (error) {
-        res.status(400).json({ error: 'Unable to create venue', details: error.message });
-    }
+const validateObjectId = (id) => mongoose.isValidObjectId(id);
+
+const getAllVenues = async (req, res) => {
+  try {
+    const venues = await Venue.find().sort({ name: 1 });
+    return res.json(venues);
+  } catch (error) {
+    return res.status(500).json({ error: 'Unable to fetch venues', details: error.message });
+  }
 };
 
-// GET /venues
-const getVenues = async (req, res) => {
-    try {
-        const venues = await Venue.find();
-        res.status(200).json(venues);
-    } catch (error) {
-        res.status(500).json({ error: 'Unable to get venues', details: error.message });
-    }
-};
-
-// GET /venues/:id
 const getVenueById = async (req, res) => {
-    const venueId = req.params.id;
-    try {
-        if (!isValidObjectId(venueId)) {
-            return res.status(400).json({ error: 'Invalid venue ID', details: error.message });
-        }
-        const venue = await Venue.findById(venueId);
-        res.status(200).json(venue);
-    } catch (error) {
-        res.status(500).json({ error: 'Unable to get venues by ID', details: error.message });
+  const { id } = req.params;
+  if (!validateObjectId(id)) {
+    return res.status(400).json({ error: 'Invalid venue ID' });
+  }
+
+  try {
+    const venue = await Venue.findById(id);
+    if (!venue) {
+      return res.status(404).json({ error: 'Venue not found' });
     }
+    return res.json(venue);
+  } catch (error) {
+    return res.status(500).json({ error: 'Unable to fetch venue', details: error.message });
+  }
 };
 
-// PUT /venues/:id
+const createVenue = async (req, res) => {
+  try {
+    const venue = new Venue(req.body);
+    await venue.save();
+    return res.status(201).json(venue);
+  } catch (error) {
+    return res.status(400).json({ error: 'Unable to create venue', details: error.message });
+  }
+};
+
 const updateVenue = async (req, res) => {
-    const venueId = req.params.id;
-    const data = req.body;
-    try {
-        if (!isValidObjectId(venueId)) {
-            return res.status(400).json({ error: 'Invalid venue ID', details: error.message });
-        }
+  const { id } = req.params;
+  if (!validateObjectId(id)) {
+    return res.status(400).json({ error: 'Invalid venue ID' });
+  }
 
-        const venue = await Venue.findByIdAndUpdate(
-            venueId,
-            data,
-            { new: true, runValidators: true }
-        );
+  try {
+    const venue = await Venue.findByIdAndUpdate(id, req.body, {
+      new: true,
+      runValidators: true,
+    });
 
-        if (!venue) {
-            return res.status(404).json({ error: 'Venue Not Found', error: error.message });
-        }
-
-        res.status(200).json(venue);
-    } catch (error) {
-        res.status(400).json({ error: 'Unable to update venue', error: error.message });
+    if (!venue) {
+      return res.status(404).json({ error: 'Venue not found' });
     }
-}
+    return res.json(venue);
+  } catch (error) {
+    return res.status(400).json({ error: 'Unable to update venue', details: error.message });
+  }
+};
 
-// DELETE /venues/:id
 const deleteVenue = async (req, res) => {
-    const venueId = req.params.id;
-    try {
-        if (!isValidObjectId(venueId)) {
-            return res.status(400).json({ error: 'Invalid venue ID', details: error.message });
-        }
+  const { id } = req.params;
+  if (!validateObjectId(id)) {
+    return res.status(400).json({ error: 'Invalid venue ID' });
+  }
 
-        const venue = await Venue.findByIdAndDelete(venueId);
-
-        if (!venue) {
-            return res.status(404).json({ error: 'Venue Not Found', error: error.message });
-        }
-
-        res.status(200).json({ error: 'Venue deleted successfully', error: error.message });
-    } catch (error) {
-        res.status(500).json({ error: 'Unable to delete venue', error: error.message });
+  try {
+    const venue = await Venue.findByIdAndDelete(id);
+    if (!venue) {
+      return res.status(404).json({ error: 'Venue not found' });
     }
-}
+    return res.json({ message: 'Venue deleted successfully' });
+  } catch (error) {
+    return res.status(500).json({ error: 'Unable to delete venue', details: error.message });
+  }
+};
 
 module.exports = {
-    createVenue,
-    getVenues,
-    getVenueById,
-    updateVenue,
-    deleteVenue
+  getAllVenues,
+  getVenueById,
+  createVenue,
+  updateVenue,
+  deleteVenue,
 };
