@@ -50,7 +50,7 @@ const updateEvent = async (req, res) => {
 
   try {
     const event = await Event.findByIdAndUpdate(id, req.body, {
-      new: true,
+      returnDocument: 'after',
       runValidators: true,
     });
 

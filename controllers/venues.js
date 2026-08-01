@@ -47,7 +47,7 @@ const updateVenue = async (req, res) => {
 
   try {
     const venue = await Venue.findByIdAndUpdate(id, req.body, {
-      new: true,
+      returnDocument: 'after',
       runValidators: true,
     });
 

@@ -1,4 +1,6 @@
-require('dotenv').config({ path: require('path').resolve(__dirname, 'utilities/.env') });
+const path = require('path');
+const dotenv = require('dotenv');
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -11,7 +13,7 @@ const swaggerDocument = require('./swagger/swagger');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Top-level redirect middleware to catch case-variant Swagger paths early
+// Top-level redirect middleware to catch case-variant Swagger paths 
 app.use((req, res, next) => {
   try {
     const raw = (req.originalUrl || req.url || '').split('?')[0];
@@ -83,4 +85,8 @@ const startServer = async () => {
   });
 };
 
-startServer();
+if (require.main === module) {
+  startServer();
+}
+
+module.exports = { app, connectDB };

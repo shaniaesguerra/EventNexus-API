@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "test": "echo \"No tests defined yet\""
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,9 @@
     "passport": "^0.7.0",
     "swagger-autogen": "^2.9.2",
     "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "supertest": "^7.2.2"
   }
 }

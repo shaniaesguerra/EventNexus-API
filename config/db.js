@@ -1,13 +1,14 @@
 const path = require('path');
 const dns = require('dns');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 // Force DNS resolution through public resolvers before MongoDB SRV lookup.
 // This avoids local DNS or network setups that block MongoDB Atlas SRV records.
 dns.setServers(['8.8.8.8', '1.1.1.1']);
 console.log('db.js: DNS servers set to', dns.getServers());
 
-require('dotenv').config({ path: path.resolve(__dirname, '../utilities/.env') });
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 mongoose.set('strictQuery', false);
 
