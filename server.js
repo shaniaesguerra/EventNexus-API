@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/db');
-const eventsRouter = require('./routes/events');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,11 +8,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to EventNexus API, Explore our best Events!  ' });
-});
-
-app.use('/events', eventsRouter);
+// API ROUTES
+app.use('/', require('./routes'));
 
 const startServer = async () => {
   await connectDB();
