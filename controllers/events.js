@@ -4,10 +4,13 @@ const Event = require('../models/Event');
 const validateObjectId = (id) => mongoose.isValidObjectId(id);
 
 const getAllEvents = async (req, res) => {
+  console.log('getAllEvents called, mongoose readyState=', mongoose.connection.readyState, 'Event connection readyState=', Event.db.readyState);
   try {
     const events = await Event.find().sort({ date: 1 });
+    console.log('getAllEvents retrieved', events.length, 'records');
     return res.json(events);
   } catch (error) {
+    console.error('getAllEvents error', error.message);
     return res.status(500).json({ error: 'Unable to fetch events', details: error.message });
   }
 };
