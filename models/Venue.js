@@ -16,6 +16,10 @@ const venueSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    state: { 
+        type: String, 
+        default: '' 
+    },
     services: {
         type: [String],
         enum: ["food", "parking", "WIFI"],
