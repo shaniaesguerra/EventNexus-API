@@ -3,7 +3,7 @@ const swaggerAutogen = require('swagger-autogen')();
 const doc = {
     info: {
         title: 'Event Nexus API',
-        description: 'API documentation for available routes and requests'
+        description: 'This is an api server for a events and bookings app/website.'
     },
     host: 'localhost:3000',
     schemes: ['http', 'https']
