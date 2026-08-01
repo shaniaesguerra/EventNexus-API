@@ -1,3 +1,9 @@
+const mongoose = require('mongoose');
+
+const isValidObjectId = function (id) {
+    return mongoose.Types.ObjectId.isValid(id);
+};
+
 const validateVenueServices = function (array) {
     const allowed = ["food", "parking", "WIFI"];
     const unique = new Set(array);
@@ -11,5 +17,6 @@ const validateVenueServices = function (array) {
 }
 
 module.exports = {
+    isValidObjectId,
     validateVenueServices
 };

@@ -41,7 +41,7 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to EventNexus API, Explore our best Events!' });
-});
+ });
 
 app.get('/health', (req, res) => {
   res.status(200).json({
