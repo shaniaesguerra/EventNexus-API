@@ -1,0 +1,1892 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Event Nexus API",
+    "description": "This is the API documentation for available endpoints in the Event Nexus API project. The idea is that it will handle events and bookings that can be implemented in an app or website.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Events",
+      "description": "Event endpoints"
+    },
+    {
+      "name": "Venues",
+      "description": "Venue endpoints"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/events/": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Get all events",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "List of events",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "array"
+                },
+                "items": {
+                  "$ref": "#/definitions/Event"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Create a new event",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Event payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "required": {
+                  "type": "array",
+                  "example": [
+                    "title",
+                    "date",
+                    "venueId",
+                    "userId"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "description": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "date": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "date-time"
+                        }
+                      }
+                    },
+                    "time": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "venueId": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "userId": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "category": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "capacity": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        }
+                      }
+                    },
+                    "age": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        }
+                      }
+                    },
+                    "price": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "number"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "example": "Tech Conference 2026"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Annual developer conference"
+                    },
+                    "date": {
+                      "type": "string",
+                      "example": "2026-09-15T09:00:00.000Z"
+                    },
+                    "time": {
+                      "type": "string",
+                      "example": "09:00 AM"
+                    },
+                    "venueId": {
+                      "type": "string",
+                      "example": "6a6e45cff28359b8e7e2251e"
+                    },
+                    "userId": {
+                      "type": "string",
+                      "example": "66f1aa11e4b0123456789206"
+                    },
+                    "category": {
+                      "type": "string",
+                      "example": "Tech"
+                    },
+                    "capacity": {
+                      "type": "number",
+                      "example": 500
+                    },
+                    "age": {
+                      "type": "number",
+                      "example": 18
+                    },
+                    "price": {
+                      "type": "number",
+                      "example": 50
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "Upcoming"
+                    }
+                  }
+                },
+                "default": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "example": "Tech Conference 2026"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Annual developer conference"
+                    },
+                    "date": {
+                      "type": "string",
+                      "example": "2026-09-15T09:00:00.000Z"
+                    },
+                    "time": {
+                      "type": "string",
+                      "example": "09:00 AM"
+                    },
+                    "venueId": {
+                      "type": "string",
+                      "example": "6a6e45cff28359b8e7e2251e"
+                    },
+                    "userId": {
+                      "type": "string",
+                      "example": "66f1aa11e4b0123456789206"
+                    },
+                    "category": {
+                      "type": "string",
+                      "example": "Tech"
+                    },
+                    "capacity": {
+                      "type": "number",
+                      "example": 500
+                    },
+                    "age": {
+                      "type": "number",
+                      "example": 18
+                    },
+                    "price": {
+                      "type": "number",
+                      "example": 50
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "Upcoming"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Event created",
+            "schema": {
+              "$ref": "#/definitions/Event"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/events/{id}": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Get event by ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Event ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Event found",
+            "schema": {
+              "$ref": "#/definitions/Event"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Event not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Update an event",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Event ID"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Updated event payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "required": {
+                  "type": "array",
+                  "example": [
+                    "title",
+                    "date",
+                    "venueId",
+                    "userId"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "description": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "date": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        },
+                        "format": {
+                          "type": "string",
+                          "example": "date-time"
+                        }
+                      }
+                    },
+                    "time": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "venueId": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "userId": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "category": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "capacity": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        }
+                      }
+                    },
+                    "age": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        }
+                      }
+                    },
+                    "price": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "number"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "example": "Tech Conference 2026"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Annual developer conference"
+                    },
+                    "date": {
+                      "type": "string",
+                      "example": "2026-09-15T09:00:00.000Z"
+                    },
+                    "time": {
+                      "type": "string",
+                      "example": "09:00 AM"
+                    },
+                    "venueId": {
+                      "type": "string",
+                      "example": "6a6e45cff28359b8e7e2251e"
+                    },
+                    "userId": {
+                      "type": "string",
+                      "example": "66f1aa11e4b0123456789206"
+                    },
+                    "category": {
+                      "type": "string",
+                      "example": "Tech"
+                    },
+                    "capacity": {
+                      "type": "number",
+                      "example": 500
+                    },
+                    "age": {
+                      "type": "number",
+                      "example": 18
+                    },
+                    "price": {
+                      "type": "number",
+                      "example": 50
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "Upcoming"
+                    }
+                  }
+                },
+                "default": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "example": "Tech Conference 2026"
+                    },
+                    "description": {
+                      "type": "string",
+                      "example": "Annual developer conference"
+                    },
+                    "date": {
+                      "type": "string",
+                      "example": "2026-09-15T09:00:00.000Z"
+                    },
+                    "time": {
+                      "type": "string",
+                      "example": "09:00 AM"
+                    },
+                    "venueId": {
+                      "type": "string",
+                      "example": "6a6e45cff28359b8e7e2251e"
+                    },
+                    "userId": {
+                      "type": "string",
+                      "example": "66f1aa11e4b0123456789206"
+                    },
+                    "category": {
+                      "type": "string",
+                      "example": "Tech"
+                    },
+                    "capacity": {
+                      "type": "number",
+                      "example": 500
+                    },
+                    "age": {
+                      "type": "number",
+                      "example": 18
+                    },
+                    "price": {
+                      "type": "number",
+                      "example": 50
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "Upcoming"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Event updated",
+            "schema": {
+              "$ref": "#/definitions/Event"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Event not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Delete an event",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Event ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Event deleted"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Event not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/venues/": {
+      "get": {
+        "tags": [
+          "Venues"
+        ],
+        "summary": "Get all venues",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "A list of venues",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "array"
+                },
+                "items": {
+                  "$ref": "#/definitions/Venue"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Venues"
+        ],
+        "summary": "Create a new venue",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Venue payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "required": {
+                  "type": "array",
+                  "example": [
+                    "name",
+                    "address",
+                    "city"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "address": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "city": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "state": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "services": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "array"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "capacity": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        }
+                      }
+                    },
+                    "contactNumber": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "contactEmail": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Grand Convention Center"
+                    },
+                    "address": {
+                      "type": "string",
+                      "example": "123 Main Street"
+                    },
+                    "city": {
+                      "type": "string",
+                      "example": "New York"
+                    },
+                    "state": {
+                      "type": "string",
+                      "example": "NY"
+                    },
+                    "services": {
+                      "type": "array",
+                      "example": [
+                        "WiFi",
+                        "Parking",
+                        "Catering"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "capacity": {
+                      "type": "number",
+                      "example": 1000
+                    },
+                    "contactNumber": {
+                      "type": "string",
+                      "example": "+1-555-123-4567"
+                    },
+                    "contactEmail": {
+                      "type": "string",
+                      "example": "events@grandcenter.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Venue created",
+            "schema": {
+              "$ref": "#/definitions/Venue"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/venues/{id}": {
+      "get": {
+        "tags": [
+          "Venues"
+        ],
+        "summary": "Get venue by ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Venue ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Venue found",
+            "schema": {
+              "$ref": "#/definitions/Venue"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Venue not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Venues"
+        ],
+        "summary": "Update a venue",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Venue ID"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Updated venue payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "object"
+                },
+                "required": {
+                  "type": "array",
+                  "example": [
+                    "name",
+                    "address",
+                    "city"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "properties": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "address": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "city": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "state": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "services": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "array"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "string"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "capacity": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "integer"
+                        }
+                      }
+                    },
+                    "contactNumber": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    },
+                    "contactEmail": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Grand Convention Center"
+                    },
+                    "address": {
+                      "type": "string",
+                      "example": "123 Main Street"
+                    },
+                    "city": {
+                      "type": "string",
+                      "example": "New York"
+                    },
+                    "state": {
+                      "type": "string",
+                      "example": "NY"
+                    },
+                    "services": {
+                      "type": "array",
+                      "example": [
+                        "WiFi",
+                        "Parking",
+                        "Catering"
+                      ],
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "capacity": {
+                      "type": "number",
+                      "example": 1000
+                    },
+                    "contactNumber": {
+                      "type": "string",
+                      "example": "+1-555-123-4567"
+                    },
+                    "contactEmail": {
+                      "type": "string",
+                      "example": "events@grandcenter.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Venue updated",
+            "schema": {
+              "$ref": "#/definitions/Venue"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Venue not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Venues"
+        ],
+        "summary": "Delete a venue",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Venue ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Venue deleted"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Venue not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Event": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "object"
+        },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "title": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "description": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "date": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "format": {
+                  "type": "string",
+                  "example": "date-time"
+                }
+              }
+            },
+            "time": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "venueId": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "userId": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "category": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "capacity": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "integer"
+                }
+              }
+            },
+            "age": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "integer"
+                }
+              }
+            },
+            "price": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "number"
+                }
+              }
+            },
+            "status": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "createdAt": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "format": {
+                  "type": "string",
+                  "example": "date-time"
+                }
+              }
+            },
+            "updatedAt": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "format": {
+                  "type": "string",
+                  "example": "date-time"
+                }
+              }
+            }
+          }
+        },
+        "example": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "example": "66f1aa11e4b0123456789206"
+            },
+            "title": {
+              "type": "string",
+              "example": "Tech Conference 2026"
+            },
+            "description": {
+              "type": "string",
+              "example": "Annual developer conference"
+            },
+            "date": {
+              "type": "string",
+              "example": "2026-09-15T09:00:00.000Z"
+            },
+            "time": {
+              "type": "string",
+              "example": "09:00 AM"
+            },
+            "venueId": {
+              "type": "string",
+              "example": "6a6e45cff28359b8e7e2251e"
+            },
+            "userId": {
+              "type": "string",
+              "example": "66f1aa11e4b0123456789206"
+            },
+            "category": {
+              "type": "string",
+              "example": "Tech"
+            },
+            "capacity": {
+              "type": "number",
+              "example": 500
+            },
+            "age": {
+              "type": "number",
+              "example": 18
+            },
+            "price": {
+              "type": "number",
+              "example": 50
+            },
+            "status": {
+              "type": "string",
+              "example": "Upcoming"
+            },
+            "createdAt": {
+              "type": "string",
+              "example": "2026-05-01T12:00:00.000Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "example": "2026-05-01T12:00:00.000Z"
+            }
+          }
+        }
+      }
+    },
+    "EventInput": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "object"
+        },
+        "required": {
+          "type": "array",
+          "example": [
+            "title",
+            "date",
+            "venueId",
+            "userId"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "Tech Conference 2026"
+                }
+              }
+            },
+            "description": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "Annual developer conference"
+                }
+              }
+            },
+            "date": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "format": {
+                  "type": "string",
+                  "example": "date-time"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "2026-09-15T09:00:00.000Z"
+                }
+              }
+            },
+            "time": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "09:00 AM"
+                }
+              }
+            },
+            "venueId": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "6a6e45cff28359b8e7e2251e"
+                }
+              }
+            },
+            "userId": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "66f1aa11e4b0123456789206"
+                }
+              }
+            },
+            "category": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "Tech"
+                }
+              }
+            },
+            "capacity": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "integer"
+                },
+                "example": {
+                  "type": "number",
+                  "example": 500
+                }
+              }
+            },
+            "age": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "integer"
+                },
+                "example": {
+                  "type": "number",
+                  "example": 18
+                }
+              }
+            },
+            "price": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "number"
+                },
+                "example": {
+                  "type": "number",
+                  "example": 50
+                }
+              }
+            },
+            "status": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "Upcoming"
+                }
+              }
+            }
+          }
+        },
+        "example": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "example": "Tech Conference 2026"
+            },
+            "description": {
+              "type": "string",
+              "example": "Annual developer conference"
+            },
+            "date": {
+              "type": "string",
+              "example": "2026-09-15T09:00:00.000Z"
+            },
+            "time": {
+              "type": "string",
+              "example": "09:00 AM"
+            },
+            "venueId": {
+              "type": "string",
+              "example": "6a6e45cff28359b8e7e2251e"
+            },
+            "userId": {
+              "type": "string",
+              "example": "66f1aa11e4b0123456789206"
+            },
+            "category": {
+              "type": "string",
+              "example": "Tech"
+            },
+            "capacity": {
+              "type": "number",
+              "example": 500
+            },
+            "age": {
+              "type": "number",
+              "example": 18
+            },
+            "price": {
+              "type": "number",
+              "example": 50
+            },
+            "status": {
+              "type": "string",
+              "example": "Upcoming"
+            }
+          }
+        }
+      }
+    },
+    "Venue": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "object"
+        },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "name": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "address": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "city": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "services": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "array"
+                },
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "capacity": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "integer"
+                }
+              }
+            },
+            "contactNumber": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "contactEmail": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            },
+            "createdAt": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "format": {
+                  "type": "string",
+                  "example": "date-time"
+                }
+              }
+            },
+            "updatedAt": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "format": {
+                  "type": "string",
+                  "example": "date-time"
+                }
+              }
+            }
+          }
+        },
+        "example": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "example": "6a6e45cff28359b8e7e2251e"
+            },
+            "name": {
+              "type": "string",
+              "example": "Grand Convention Center"
+            },
+            "address": {
+              "type": "string",
+              "example": "123 Main Street"
+            },
+            "city": {
+              "type": "string",
+              "example": "New York"
+            },
+            "services": {
+              "type": "array",
+              "example": [
+                "WiFi",
+                "Parking",
+                "Catering"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "capacity": {
+              "type": "number",
+              "example": 1000
+            },
+            "contactNumber": {
+              "type": "string",
+              "example": "+1-555-123-4567"
+            },
+            "contactEmail": {
+              "type": "string",
+              "example": "events@grandcenter.com"
+            },
+            "createdAt": {
+              "type": "string",
+              "example": "2026-05-01T12:00:00.000Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "example": "2026-05-01T12:00:00.000Z"
+            }
+          }
+        }
+      }
+    },
+    "VenueInput": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "object"
+        },
+        "required": {
+          "type": "array",
+          "example": [
+            "name",
+            "address",
+            "city"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "Grand Convention Center"
+                }
+              }
+            },
+            "address": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "123 Main Street"
+                }
+              }
+            },
+            "city": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "New York"
+                }
+              }
+            },
+            "services": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "array"
+                },
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "example": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "type": "array",
+                  "example": [
+                    "WiFi",
+                    "Parking",
+                    "Catering"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "capacity": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "integer"
+                },
+                "example": {
+                  "type": "number",
+                  "example": 1000
+                }
+              }
+            },
+            "contactNumber": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "+1-555-123-4567"
+                }
+              }
+            },
+            "contactEmail": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "example": {
+                  "type": "string",
+                  "example": "events@grandcenter.com"
+                }
+              }
+            }
+          }
+        },
+        "example": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Grand Convention Center"
+            },
+            "address": {
+              "type": "string",
+              "example": "123 Main Street"
+            },
+            "city": {
+              "type": "string",
+              "example": "New York"
+            },
+            "services": {
+              "type": "array",
+              "example": [
+                "WiFi",
+                "Parking",
+                "Catering"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "capacity": {
+              "type": "number",
+              "example": 1000
+            },
+            "contactNumber": {
+              "type": "string",
+              "example": "+1-555-123-4567"
+            },
+            "contactEmail": {
+              "type": "string",
+              "example": "events@grandcenter.com"
+            }
+          }
+        }
+      }
+    }
+  }
+}
