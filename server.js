@@ -5,10 +5,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const connectDB = require('./config/db');
-const eventsRouter = require('./routes/events');
-const venuesRouter = require('./routes/venues');
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger/swagger');
+const swaggerDocument = require('./swagger/swagger.json');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -41,10 +39,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to EventNexus API, Explore our best Events!' });
- });
-
 app.get('/health', (req, res) => {
   res.status(200).json({
     status: 'ok',
@@ -52,25 +46,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Middleware: catch common Swagger UI path variants (case-insensitive) and redirect to canonical `/api-docs`
-app.use((req, res, next) => {
-  try {
-    const p = req.path || '';
-    // matches /api-doc, /Api-docs, /API-DOCS/, /api-docs/anything
-    if (/^\/api-?docs?(\/.*)?$/i.test(p)) {
-      if (p.toLowerCase() === '/api-docs' || p.toLowerCase().startsWith('/api-docs/')) {
-        return next();
-      }
-      return res.redirect(301, '/api-docs');
-    }
-  } catch (e) {
-    // ignore and continue
-  }
-  return next();
-});
-
-app.use('/events', eventsRouter);
-app.use('/venues', venuesRouter);
+app.use('/', require('./routes') );
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const startServer = async () => {
