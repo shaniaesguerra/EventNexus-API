@@ -1,58 +1,70 @@
 const path = require('path');
 const dotenv = require('dotenv');
-dotenv.config({ path: path.resolve(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
-const connectDB = require('./config/db');
+const fs = require('fs'); //filestream, replaces 'body-parser'
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger/swagger.json');
+const connectDB = require('./config/db');
+
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Top-level redirect middleware to catch case-variant Swagger paths 
-app.use((req, res, next) => {
-  try {
-    const raw = (req.originalUrl || req.url || '').split('?')[0];
-    if (/^\/api-?docs?(\/.*)?$/i.test(raw)) {
-      if (raw.toLowerCase() === '/api-docs' || raw.toLowerCase().startsWith('/api-docs/')) {
-        return next();
-      }
-      return res.redirect(301, '/api-docs');
-    }
-  } catch (e) {
-    // proceed if anything goes wrong
-  }
-  return next();
-});
+app.set('trust proxy', true);
 
+// built-in body parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Enable CORS for API and Swagger UI
-app.use(cors());
+// CORS
+app.use(cors({ origin: '*' }));
 
-// Simple request logger to help debug routing
+// simple logger
 app.use((req, res, next) => {
-  console.log('Incoming request:', req.method, req.originalUrl || req.url, '-> path:', req.path);
+  console.log(`${req.method} ${req.originalUrl}`);
   next();
 });
 
+// health check
 app.get('/health', (req, res) => {
-  res.status(200).json({
+  res.json({
     status: 'ok',
-    database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+    db: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
   });
 });
 
-app.use('/', require('./routes') );
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app routes
+app.use('/', require('./routes'));
+
+// dynamic swagger spec so UI uses current protocol/host
+app.get('/swagger.json', async (req, res) => {
+  try {
+    const raw = await fs.promises.readFile(path.join(__dirname, 'swagger', 'swagger.json'), 'utf8');
+    const doc = JSON.parse(raw);
+
+    if (doc.openapi) {
+      doc.servers = [{ url: `${req.protocol}://${req.get('host')}` }];
+    } else if (doc.swagger === '2.0') {
+      doc.host = req.get('host');
+      doc.schemes = [req.protocol];
+      doc.basePath = doc.basePath || '/';
+    }
+
+    res.json(doc);
+  } catch (error) {
+    console.error('Failed to load swagger.json', error);
+    res.status(500).json({ error: 'Unable to load swagger spec' });
+  }
+});
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(null, { swaggerUrl: '/swagger.json' }));
 
 const startServer = async () => {
   const connected = await connectDB();
+
   if (!connected) {
-    console.error('MongoDB is unavailable. The server will not start until the database connection succeeds.');
+    console.error('Failed to connect to MongoDB. Server will not start.');
     process.exit(1);
   }
 
@@ -64,5 +76,3 @@ const startServer = async () => {
 if (require.main === module) {
   startServer();
 }
-
-module.exports = { app, connectDB };

@@ -31,6 +31,22 @@ const doc = {
         createdAt: { type: 'string', format: 'date-time' },
         updatedAt: { type: 'string', format: 'date-time' },
       },
+      example: {
+        _id: '66f1aa11e4b0123456789206',
+        title: 'Tech Conference 2026',
+        description: 'Annual developer conference',
+        date: '2026-09-15T09:00:00.000Z',
+        time: '09:00 AM',
+        venueId: '6a6e45cff28359b8e7e2251e',
+        userId: '66f1aa11e4b0123456789206',
+        category: 'Tech',
+        capacity: 500,
+        age: 18,
+        price: 50,
+        status: 'Upcoming',
+        createdAt: '2026-05-01T12:00:00.000Z',
+        updatedAt: '2026-05-01T12:00:00.000Z'
+      }
     },
     EventInput: {
       type: 'object',
@@ -48,6 +64,19 @@ const doc = {
         price: { type: 'number', example: 50 },
         status: { type: 'string', example: 'Upcoming' },
       },
+      example: {
+        title: 'Tech Conference 2026',
+        description: 'Annual developer conference',
+        date: '2026-09-15T09:00:00.000Z',
+        time: '09:00 AM',
+        venueId: '6a6e45cff28359b8e7e2251e',
+        userId: '66f1aa11e4b0123456789206',
+        category: 'Tech',
+        capacity: 500,
+        age: 18,
+        price: 50,
+        status: 'Upcoming'
+      }
     },
     Venue: {
       type: 'object',
@@ -63,10 +92,22 @@ const doc = {
         createdAt: { type: 'string', format: 'date-time' },
         updatedAt: { type: 'string', format: 'date-time' },
       },
+      example: {
+        _id: '6a6e45cff28359b8e7e2251e',
+        name: 'Grand Convention Center',
+        address: '123 Main Street',
+        city: 'New York',
+        services: ['WiFi', 'Parking', 'Catering'],
+        capacity: 1000,
+        contactNumber: '+1-555-123-4567',
+        contactEmail: 'events@grandcenter.com',
+        createdAt: '2026-05-01T12:00:00.000Z',
+        updatedAt: '2026-05-01T12:00:00.000Z'
+      }
     },
     VenueInput: {
       type: 'object',
-      required: ['name', 'address', 'city', 'state'],
+      required: ['name', 'address', 'city'],
       properties: {
         name: { type: 'string', example: 'Grand Convention Center' },
         address: { type: 'string', example: '123 Main Street' },
@@ -80,6 +121,15 @@ const doc = {
         contactNumber: { type: 'string', example: '+1-555-123-4567' },
         contactEmail: { type: 'string', example: 'events@grandcenter.com' },
       },
+      example: {
+        name: 'Grand Convention Center',
+        address: '123 Main Street',
+        city: 'New York',
+        services: ['WiFi', 'Parking', 'Catering'],
+        capacity: 1000,
+        contactNumber: '+1-555-123-4567',
+        contactEmail: 'events@grandcenter.com'
+      }
     },
   },
 };
