@@ -21,15 +21,15 @@
     "https",
     "http"
   ],
-  "consumes": [],
-  "produces": [],
   "paths": {
     "/": {
       "get": {
-        "tags": [],
         "description": "",
-        "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/events/": {
@@ -39,7 +39,6 @@
         ],
         "summary": "Get all events",
         "description": "",
-        "parameters": [],
         "responses": {
           "200": {
             "description": "List of events",
@@ -77,231 +76,7 @@
             "description": "Event payload",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "object"
-                },
-                "required": {
-                  "type": "array",
-                  "example": [
-                    "title",
-                    "date",
-                    "venueId",
-                    "userId"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "properties": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "description": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "date": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "format": {
-                          "type": "string",
-                          "example": "date-time"
-                        }
-                      }
-                    },
-                    "time": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "venueId": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "userId": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "category": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "capacity": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "integer"
-                        }
-                      }
-                    },
-                    "age": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "integer"
-                        }
-                      }
-                    },
-                    "price": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "number"
-                        }
-                      }
-                    },
-                    "status": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    }
-                  }
-                },
-                "example": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "string",
-                      "example": "Tech Conference 2026"
-                    },
-                    "description": {
-                      "type": "string",
-                      "example": "Annual developer conference"
-                    },
-                    "date": {
-                      "type": "string",
-                      "example": "2026-09-15T09:00:00.000Z"
-                    },
-                    "time": {
-                      "type": "string",
-                      "example": "09:00 AM"
-                    },
-                    "venueId": {
-                      "type": "string",
-                      "example": "6a6e45cff28359b8e7e2251e"
-                    },
-                    "userId": {
-                      "type": "string",
-                      "example": "66f1aa11e4b0123456789206"
-                    },
-                    "category": {
-                      "type": "string",
-                      "example": "Tech"
-                    },
-                    "capacity": {
-                      "type": "number",
-                      "example": 500
-                    },
-                    "age": {
-                      "type": "number",
-                      "example": 18
-                    },
-                    "price": {
-                      "type": "number",
-                      "example": 50
-                    },
-                    "status": {
-                      "type": "string",
-                      "example": "Upcoming"
-                    }
-                  }
-                },
-                "default": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "string",
-                      "example": "Tech Conference 2026"
-                    },
-                    "description": {
-                      "type": "string",
-                      "example": "Annual developer conference"
-                    },
-                    "date": {
-                      "type": "string",
-                      "example": "2026-09-15T09:00:00.000Z"
-                    },
-                    "time": {
-                      "type": "string",
-                      "example": "09:00 AM"
-                    },
-                    "venueId": {
-                      "type": "string",
-                      "example": "6a6e45cff28359b8e7e2251e"
-                    },
-                    "userId": {
-                      "type": "string",
-                      "example": "66f1aa11e4b0123456789206"
-                    },
-                    "category": {
-                      "type": "string",
-                      "example": "Tech"
-                    },
-                    "capacity": {
-                      "type": "number",
-                      "example": 500
-                    },
-                    "age": {
-                      "type": "number",
-                      "example": 18
-                    },
-                    "price": {
-                      "type": "number",
-                      "example": 50
-                    },
-                    "status": {
-                      "type": "string",
-                      "example": "Upcoming"
-                    }
-                  }
-                }
-              }
+              "$ref": "#/definitions/EventInput"
             }
           }
         ],
@@ -372,231 +147,7 @@
             "description": "Updated event payload",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "object"
-                },
-                "required": {
-                  "type": "array",
-                  "example": [
-                    "title",
-                    "date",
-                    "venueId",
-                    "userId"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "properties": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "description": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "date": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        },
-                        "format": {
-                          "type": "string",
-                          "example": "date-time"
-                        }
-                      }
-                    },
-                    "time": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "venueId": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "userId": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "category": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "capacity": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "integer"
-                        }
-                      }
-                    },
-                    "age": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "integer"
-                        }
-                      }
-                    },
-                    "price": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "number"
-                        }
-                      }
-                    },
-                    "status": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    }
-                  }
-                },
-                "example": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "string",
-                      "example": "Tech Conference 2026"
-                    },
-                    "description": {
-                      "type": "string",
-                      "example": "Annual developer conference"
-                    },
-                    "date": {
-                      "type": "string",
-                      "example": "2026-09-15T09:00:00.000Z"
-                    },
-                    "time": {
-                      "type": "string",
-                      "example": "09:00 AM"
-                    },
-                    "venueId": {
-                      "type": "string",
-                      "example": "6a6e45cff28359b8e7e2251e"
-                    },
-                    "userId": {
-                      "type": "string",
-                      "example": "66f1aa11e4b0123456789206"
-                    },
-                    "category": {
-                      "type": "string",
-                      "example": "Tech"
-                    },
-                    "capacity": {
-                      "type": "number",
-                      "example": 500
-                    },
-                    "age": {
-                      "type": "number",
-                      "example": 18
-                    },
-                    "price": {
-                      "type": "number",
-                      "example": 50
-                    },
-                    "status": {
-                      "type": "string",
-                      "example": "Upcoming"
-                    }
-                  }
-                },
-                "default": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "string",
-                      "example": "Tech Conference 2026"
-                    },
-                    "description": {
-                      "type": "string",
-                      "example": "Annual developer conference"
-                    },
-                    "date": {
-                      "type": "string",
-                      "example": "2026-09-15T09:00:00.000Z"
-                    },
-                    "time": {
-                      "type": "string",
-                      "example": "09:00 AM"
-                    },
-                    "venueId": {
-                      "type": "string",
-                      "example": "6a6e45cff28359b8e7e2251e"
-                    },
-                    "userId": {
-                      "type": "string",
-                      "example": "66f1aa11e4b0123456789206"
-                    },
-                    "category": {
-                      "type": "string",
-                      "example": "Tech"
-                    },
-                    "capacity": {
-                      "type": "number",
-                      "example": 500
-                    },
-                    "age": {
-                      "type": "number",
-                      "example": 18
-                    },
-                    "price": {
-                      "type": "number",
-                      "example": 50
-                    },
-                    "status": {
-                      "type": "string",
-                      "example": "Upcoming"
-                    }
-                  }
-                }
-              }
+              "$ref": "#/definitions/EventInput"
             }
           }
         ],
@@ -653,7 +204,6 @@
         ],
         "summary": "Get all venues",
         "description": "",
-        "parameters": [],
         "responses": {
           "200": {
             "description": "A list of venues",
@@ -691,154 +241,7 @@
             "description": "Venue payload",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "object"
-                },
-                "required": {
-                  "type": "array",
-                  "example": [
-                    "name",
-                    "address",
-                    "city"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "properties": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "address": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "city": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "state": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "services": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "array"
-                        },
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "example": "string"
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "capacity": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "integer"
-                        }
-                      }
-                    },
-                    "contactNumber": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "contactEmail": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    }
-                  }
-                },
-                "example": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "example": "Grand Convention Center"
-                    },
-                    "address": {
-                      "type": "string",
-                      "example": "123 Main Street"
-                    },
-                    "city": {
-                      "type": "string",
-                      "example": "New York"
-                    },
-                    "state": {
-                      "type": "string",
-                      "example": "NY"
-                    },
-                    "services": {
-                      "type": "array",
-                      "example": [
-                        "WiFi",
-                        "Parking",
-                        "Catering"
-                      ],
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "capacity": {
-                      "type": "number",
-                      "example": 1000
-                    },
-                    "contactNumber": {
-                      "type": "string",
-                      "example": "+1-555-123-4567"
-                    },
-                    "contactEmail": {
-                      "type": "string",
-                      "example": "events@grandcenter.com"
-                    }
-                  }
-                }
-              }
+              "$ref": "#/definitions/VenueInput"
             }
           }
         ],
@@ -909,154 +312,7 @@
             "description": "Updated venue payload",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "object"
-                },
-                "required": {
-                  "type": "array",
-                  "example": [
-                    "name",
-                    "address",
-                    "city"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "properties": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "address": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "city": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "state": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "services": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "array"
-                        },
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "type": {
-                              "type": "string",
-                              "example": "string"
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "capacity": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "integer"
-                        }
-                      }
-                    },
-                    "contactNumber": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    },
-                    "contactEmail": {
-                      "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "example": "string"
-                        }
-                      }
-                    }
-                  }
-                },
-                "example": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "example": "Grand Convention Center"
-                    },
-                    "address": {
-                      "type": "string",
-                      "example": "123 Main Street"
-                    },
-                    "city": {
-                      "type": "string",
-                      "example": "New York"
-                    },
-                    "state": {
-                      "type": "string",
-                      "example": "NY"
-                    },
-                    "services": {
-                      "type": "array",
-                      "example": [
-                        "WiFi",
-                        "Parking",
-                        "Catering"
-                      ],
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "capacity": {
-                      "type": "number",
-                      "example": 1000
-                    },
-                    "contactNumber": {
-                      "type": "string",
-                      "example": "+1-555-123-4567"
-                    },
-                    "contactEmail": {
-                      "type": "string",
-                      "example": "events@grandcenter.com"
-                    }
-                  }
-                }
-              }
+              "$ref": "#/definitions/VenueInput"
             }
           }
         ],
@@ -1257,67 +513,6 @@
               }
             }
           }
-        },
-        "example": {
-          "type": "object",
-          "properties": {
-            "_id": {
-              "type": "string",
-              "example": "66f1aa11e4b0123456789206"
-            },
-            "title": {
-              "type": "string",
-              "example": "Tech Conference 2026"
-            },
-            "description": {
-              "type": "string",
-              "example": "Annual developer conference"
-            },
-            "date": {
-              "type": "string",
-              "example": "2026-09-15T09:00:00.000Z"
-            },
-            "time": {
-              "type": "string",
-              "example": "09:00 AM"
-            },
-            "venueId": {
-              "type": "string",
-              "example": "6a6e45cff28359b8e7e2251e"
-            },
-            "userId": {
-              "type": "string",
-              "example": "66f1aa11e4b0123456789206"
-            },
-            "category": {
-              "type": "string",
-              "example": "Tech"
-            },
-            "capacity": {
-              "type": "number",
-              "example": 500
-            },
-            "age": {
-              "type": "number",
-              "example": 18
-            },
-            "price": {
-              "type": "number",
-              "example": 50
-            },
-            "status": {
-              "type": "string",
-              "example": "Upcoming"
-            },
-            "createdAt": {
-              "type": "string",
-              "example": "2026-05-01T12:00:00.000Z"
-            },
-            "updatedAt": {
-              "type": "string",
-              "example": "2026-05-01T12:00:00.000Z"
-            }
-          }
         }
       }
     },
@@ -1350,9 +545,13 @@
                   "type": "string",
                   "example": "string"
                 },
+                "description": {
+                  "type": "string",
+                  "example": "Event title"
+                },
                 "example": {
                   "type": "string",
-                  "example": "Tech Conference 2026"
+                  "example": "Annual Tech Conference"
                 }
               }
             },
@@ -1363,9 +562,13 @@
                   "type": "string",
                   "example": "string"
                 },
+                "description": {
+                  "type": "string",
+                  "example": "Event description"
+                },
                 "example": {
                   "type": "string",
-                  "example": "Annual developer conference"
+                  "example": "A day of talks and networking for developers."
                 }
               }
             },
@@ -1380,6 +583,10 @@
                   "type": "string",
                   "example": "date-time"
                 },
+                "description": {
+                  "type": "string",
+                  "example": "Event date in ISO 8601 format"
+                },
                 "example": {
                   "type": "string",
                   "example": "2026-09-15T09:00:00.000Z"
@@ -1393,9 +600,13 @@
                   "type": "string",
                   "example": "string"
                 },
+                "description": {
+                  "type": "string",
+                  "example": "Event start time"
+                },
                 "example": {
                   "type": "string",
-                  "example": "09:00 AM"
+                  "example": "09:00"
                 }
               }
             },
@@ -1406,9 +617,13 @@
                   "type": "string",
                   "example": "string"
                 },
+                "description": {
+                  "type": "string",
+                  "example": "Identifier of the venue"
+                },
                 "example": {
                   "type": "string",
-                  "example": "6a6e45cff28359b8e7e2251e"
+                  "example": "60f7a1b2c3d4e5f6a7b8c9d0"
                 }
               }
             },
@@ -1419,9 +634,13 @@
                   "type": "string",
                   "example": "string"
                 },
+                "description": {
+                  "type": "string",
+                  "example": "Identifier of the event owner"
+                },
                 "example": {
                   "type": "string",
-                  "example": "66f1aa11e4b0123456789206"
+                  "example": "60f7a1b2c3d4e5f6a7b8c9d1"
                 }
               }
             },
@@ -1432,9 +651,13 @@
                   "type": "string",
                   "example": "string"
                 },
+                "description": {
+                  "type": "string",
+                  "example": "Event category"
+                },
                 "example": {
                   "type": "string",
-                  "example": "Tech"
+                  "example": "Technology"
                 }
               }
             },
@@ -1444,6 +667,10 @@
                 "type": {
                   "type": "string",
                   "example": "integer"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Maximum number of attendees"
                 },
                 "example": {
                   "type": "number",
@@ -1458,6 +685,10 @@
                   "type": "string",
                   "example": "integer"
                 },
+                "description": {
+                  "type": "string",
+                  "example": "Minimum age requirement"
+                },
                 "example": {
                   "type": "number",
                   "example": 18
@@ -1471,9 +702,13 @@
                   "type": "string",
                   "example": "number"
                 },
+                "description": {
+                  "type": "string",
+                  "example": "Ticket price"
+                },
                 "example": {
                   "type": "number",
-                  "example": 50
+                  "example": 25.5
                 }
               }
             },
@@ -1484,60 +719,15 @@
                   "type": "string",
                   "example": "string"
                 },
+                "description": {
+                  "type": "string",
+                  "example": "Event status"
+                },
                 "example": {
                   "type": "string",
-                  "example": "Upcoming"
+                  "example": "published"
                 }
               }
-            }
-          }
-        },
-        "example": {
-          "type": "object",
-          "properties": {
-            "title": {
-              "type": "string",
-              "example": "Tech Conference 2026"
-            },
-            "description": {
-              "type": "string",
-              "example": "Annual developer conference"
-            },
-            "date": {
-              "type": "string",
-              "example": "2026-09-15T09:00:00.000Z"
-            },
-            "time": {
-              "type": "string",
-              "example": "09:00 AM"
-            },
-            "venueId": {
-              "type": "string",
-              "example": "6a6e45cff28359b8e7e2251e"
-            },
-            "userId": {
-              "type": "string",
-              "example": "66f1aa11e4b0123456789206"
-            },
-            "category": {
-              "type": "string",
-              "example": "Tech"
-            },
-            "capacity": {
-              "type": "number",
-              "example": 500
-            },
-            "age": {
-              "type": "number",
-              "example": 18
-            },
-            "price": {
-              "type": "number",
-              "example": 50
-            },
-            "status": {
-              "type": "string",
-              "example": "Upcoming"
             }
           }
         }
@@ -1661,58 +851,6 @@
               }
             }
           }
-        },
-        "example": {
-          "type": "object",
-          "properties": {
-            "_id": {
-              "type": "string",
-              "example": "6a6e45cff28359b8e7e2251e"
-            },
-            "name": {
-              "type": "string",
-              "example": "Grand Convention Center"
-            },
-            "address": {
-              "type": "string",
-              "example": "123 Main Street"
-            },
-            "city": {
-              "type": "string",
-              "example": "New York"
-            },
-            "services": {
-              "type": "array",
-              "example": [
-                "WiFi",
-                "Parking",
-                "Catering"
-              ],
-              "items": {
-                "type": "string"
-              }
-            },
-            "capacity": {
-              "type": "number",
-              "example": 1000
-            },
-            "contactNumber": {
-              "type": "string",
-              "example": "+1-555-123-4567"
-            },
-            "contactEmail": {
-              "type": "string",
-              "example": "events@grandcenter.com"
-            },
-            "createdAt": {
-              "type": "string",
-              "example": "2026-05-01T12:00:00.000Z"
-            },
-            "updatedAt": {
-              "type": "string",
-              "example": "2026-05-01T12:00:00.000Z"
-            }
-          }
         }
       }
     },
@@ -1744,9 +882,9 @@
                   "type": "string",
                   "example": "string"
                 },
-                "example": {
+                "description": {
                   "type": "string",
-                  "example": "Grand Convention Center"
+                  "example": "Venue name"
                 }
               }
             },
@@ -1757,9 +895,9 @@
                   "type": "string",
                   "example": "string"
                 },
-                "example": {
+                "description": {
                   "type": "string",
-                  "example": "123 Main Street"
+                  "example": "Venue address"
                 }
               }
             },
@@ -1770,9 +908,9 @@
                   "type": "string",
                   "example": "string"
                 },
-                "example": {
+                "description": {
                   "type": "string",
-                  "example": "New York"
+                  "example": "Venue city"
                 }
               }
             },
@@ -1792,16 +930,9 @@
                     }
                   }
                 },
-                "example": {
-                  "type": "array",
-                  "example": [
-                    "WiFi",
-                    "Parking",
-                    "Catering"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
+                "description": {
+                  "type": "string",
+                  "example": "Available venue services"
                 }
               }
             },
@@ -1812,9 +943,9 @@
                   "type": "string",
                   "example": "integer"
                 },
-                "example": {
-                  "type": "number",
-                  "example": 1000
+                "description": {
+                  "type": "string",
+                  "example": "Venue capacity"
                 }
               }
             },
@@ -1825,9 +956,9 @@
                   "type": "string",
                   "example": "string"
                 },
-                "example": {
+                "description": {
                   "type": "string",
-                  "example": "+1-555-123-4567"
+                  "example": "Venue contact number"
                 }
               }
             },
@@ -1838,51 +969,11 @@
                   "type": "string",
                   "example": "string"
                 },
-                "example": {
+                "description": {
                   "type": "string",
-                  "example": "events@grandcenter.com"
+                  "example": "Venue contact email"
                 }
               }
-            }
-          }
-        },
-        "example": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "example": "Grand Convention Center"
-            },
-            "address": {
-              "type": "string",
-              "example": "123 Main Street"
-            },
-            "city": {
-              "type": "string",
-              "example": "New York"
-            },
-            "services": {
-              "type": "array",
-              "example": [
-                "WiFi",
-                "Parking",
-                "Catering"
-              ],
-              "items": {
-                "type": "string"
-              }
-            },
-            "capacity": {
-              "type": "number",
-              "example": 1000
-            },
-            "contactNumber": {
-              "type": "string",
-              "example": "+1-555-123-4567"
-            },
-            "contactEmail": {
-              "type": "string",
-              "example": "events@grandcenter.com"
             }
           }
         }
