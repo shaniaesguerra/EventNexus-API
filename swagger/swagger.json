@@ -19,31 +19,33 @@
     {
       "name": "Users",
       "description": "User endpoints"
+    },
+    {
+      "name": "Registrations",
+      "description": "Registration endpoints"
     }
   ],
   "schemes": [
     "https",
     "http"
   ],
+  "consumes": [],
+  "produces": [],
   "paths": {
     "/": {
       "get": {
+        "tags": [],
         "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
+        "parameters": [],
+        "responses": {}
       }
     },
     "/login": {
       "get": {
+        "tags": [],
         "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
+        "parameters": [],
+        "responses": {}
       }
     },
     "/events/": {
@@ -53,6 +55,7 @@
         ],
         "summary": "Get all events",
         "description": "",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "List of events",
@@ -212,6 +215,7 @@
         ],
         "summary": "Get all venues",
         "description": "",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "A list of venues",
@@ -371,6 +375,7 @@
         ],
         "summary": "Get all users",
         "description": "",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "List of users",
@@ -631,7 +636,7 @@
         },
         "status": {
           "type": "string",
-          "example": "Upcoming"
+          "example": "published"
         }
       },
       "required": [
@@ -702,7 +707,7 @@
         },
         "address": {
           "type": "string",
-          "example": "788 Main Street"
+          "example": "123 Main Street"
         },
         "city": {
           "type": "string",
@@ -747,7 +752,7 @@
         },
         "FirstName": {
           "type": "string",
-          "example": "jane"
+          "example": "Jane"
         },
         "LastName": {
           "type": "string",
@@ -755,15 +760,15 @@
         },
         "jobTitle": {
           "type": "string",
-          "example": "gardden designer"
+          "example": "garden designer"
         },
         "email": {
           "type": "string",
-          "example": "jane33@example.com"
+          "example": "jane23@example.com"
         },
         "phoneNumber": {
           "type": "string",
-          "example": "+25670000345"
+          "example": "+256700000000"
         },
         "role": {
           "type": "string",
@@ -792,15 +797,15 @@
         },
         "jobTitle": {
           "type": "string",
-          "example": "garden desiner"
+          "example": "garden designer"
         },
         "email": {
           "type": "string",
-          "example": "jane33@example.com"
+          "example": "jane.xaka@example.com"
         },
         "phoneNumber": {
           "type": "string",
-          "example": "+256700000000"
+          "example": "+2567004350"
         },
         "role": {
           "type": "string",
@@ -811,6 +816,81 @@
         "FirstName",
         "LastName",
         "email"
+      ]
+    },
+    "Registration": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "example": "66f1aa11e4b0123456789206"
+        },
+        "eventId": {
+          "type": "string",
+          "example": "66f1aa11e4b0123456789207"
+        },
+        "userId": {
+          "type": "string",
+          "example": "66f1aa11e4b0123456789208"
+        },
+        "registrationDate": {
+          "type": "string",
+          "example": "2026-09-01T10:00:00.000Z"
+        },
+        "quantity": {
+          "type": "number",
+          "example": 2
+        },
+        "ticketType": {
+          "type": "string",
+          "example": "VIP"
+        },
+        "totalPrice": {
+          "type": "number",
+          "example": 100
+        },
+        "ticketStatus": {
+          "type": "string",
+          "example": "Confirmed"
+        },
+        "createdAt": {
+          "type": "string",
+          "example": "2026-09-01T10:00:00.000Z"
+        },
+        "updatedAt": {
+          "type": "string",
+          "example": "2026-09-01T10:00:00.000Z"
+        }
+      }
+    },
+    "RegistrationInput": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "example": "66f1aa11e4b0123456789207"
+        },
+        "userId": {
+          "type": "string",
+          "example": "66f1aa11e4b0123456789208"
+        },
+        "quantity": {
+          "type": "number",
+          "example": 2
+        },
+        "ticketType": {
+          "type": "string",
+          "example": "VIP"
+        },
+        "ticketStatus": {
+          "type": "string",
+          "example": "Confirmed"
+        }
+      },
+      "required": [
+        "eventId",
+        "userId",
+        "quantity"
       ]
     }
   }

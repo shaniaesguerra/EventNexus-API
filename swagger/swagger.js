@@ -11,7 +11,8 @@ const doc = {
   tags: [
     { name: 'Events', description: 'Event endpoints' },
     { name: 'Venues', description: 'Venue endpoints' },
-    { name: 'Users', description: 'User endpoints' }
+    { name: 'Users', description: 'User endpoints' },
+    { name: 'Registrations', description: 'Registration endpoints' }
   ],
   definitions: {
     Event: {
@@ -82,6 +83,25 @@ const doc = {
       $email: 'jane.xaka@example.com',
       phoneNumber: '+2567004350',
       role: 'user',
+    },
+    Registration: {
+      _id: '66f1aa11e4b0123456789206',
+      eventId: '66f1aa11e4b0123456789207',
+      userId: '66f1aa11e4b0123456789208',
+      registrationDate: '2026-09-01T10:00:00.000Z',
+      quantity: 2,
+      ticketType: 'VIP',
+      totalPrice: 100,
+      ticketStatus: 'Confirmed',
+      createdAt: '2026-09-01T10:00:00.000Z',
+      updatedAt: '2026-09-01T10:00:00.000Z'
+    },
+    RegistrationInput: {
+      $eventId: '66f1aa11e4b0123456789207',
+      $userId: '66f1aa11e4b0123456789208',
+      $quantity: 2,
+      ticketType: 'VIP',
+      ticketStatus: 'Confirmed'
     },
   },
 };
