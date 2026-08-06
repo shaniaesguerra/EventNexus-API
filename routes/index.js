@@ -9,10 +9,13 @@ router.get('/', (req, res) => {
         + '1. API Documentation: <strong>/api-docs</strong><br>'
         + '2. Events Routes: <strong>/events</strong> <strong>/events/:id</strong><br>'
         + '3. Venues Routes: <strong>/venues</strong> <strong>/venues/:id</strong><br>'
+    
+        + '5. Registrations Routes: <strong>/registrations</strong> <strong>/registrations/:id</strong><br>'
   );
 });
 
 router.use('/events', eventRoutes);
 router.use('/venues', venueRoutes);
+router.use('/registrations', require('./registrations'));
 
 module.exports = router;
