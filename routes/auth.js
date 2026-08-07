@@ -1,6 +1,5 @@
 const path = require('path');
 const express = require('express');
-const session = require('express-session');
 const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
 const dotenv = require('dotenv');
@@ -12,24 +11,8 @@ const router = express.Router();
 const {
     GITHUB_CLIENT_ID,
     GITHUB_CLIENT_SECRET,
-    SESSION_SECRET = 'eventnexus-secret',
 } = process.env;
 const GITHUB_CALLBACK_URL = process.env.GITHUB_CALLBACK_URL || process.env.CALLBACK_URL;
-
-router.use(
-    session({
-        secret: SESSION_SECRET,
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            secure: false,
-            sameSite: 'lax',
-        },
-    })
-);
-
-router.use(passport.initialize());
-router.use(passport.session());
 
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));

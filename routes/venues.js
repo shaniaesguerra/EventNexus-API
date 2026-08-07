@@ -6,6 +6,7 @@ const {
   updateVenue,
   deleteVenue,
 } = require('../controllers/venues');
+const authenticate = require('../middleware/authenticate');
 
 const router = express.Router();
 
@@ -25,7 +26,7 @@ router.get('/:id', (req, res) => {
   getVenueById(req, res);
 });
 
-router.post('/', (req, res) => {
+router.post('/', authenticate, (req, res) => {
   //#swagger.tags = ['Venues']
   //#swagger.summary = 'Create a new venue'
   //#swagger.parameters['body'] = { "in": "body", "description": "Venue payload", "required": true, "schema": { "$ref": "#/definitions/VenueInput" } }
@@ -33,7 +34,7 @@ router.post('/', (req, res) => {
   createVenue(req, res);
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', authenticate, (req, res) => {
   //#swagger.tags = ['Venues']
   //#swagger.summary = 'Update a venue'
   //#swagger.parameters['id'] = { "in": "path", "description": "Venue ID", "required": true, "type": "string" }
@@ -43,7 +44,7 @@ router.put('/:id', (req, res) => {
   updateVenue(req, res);
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authenticate, (req, res) => {
   //#swagger.tags = ['Venues']
   //#swagger.summary = 'Delete a venue'
   //#swagger.parameters['id'] = { "in": "path", "description": "Venue ID", "required": true, "type": "string" }

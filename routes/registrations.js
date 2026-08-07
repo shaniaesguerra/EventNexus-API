@@ -51,7 +51,7 @@ router.put('/:id', authenticate, validateRegistration, (req, res) => {
     updateRegistration(req, res);
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authenticate, (req, res) => {
     //#swagger.tags = ['Registrations']
     //#swagger.summary = 'Delete a registration'
     //#swagger.parameters['id'] = { "in": "path", "description": "Registration ID", "required": true, "type": "string" }

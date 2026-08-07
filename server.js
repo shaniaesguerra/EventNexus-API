@@ -4,6 +4,8 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs'); //filestream, replaces 'body-parser'
 const mongoose = require('mongoose');
+const session = require('express-session');
+const passport = require('passport');
 const swaggerUi = require('swagger-ui-express');
 const connectDB = require('./config/db');
 
@@ -20,6 +22,21 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS
 app.use(cors({ origin: '*' }));
+
+// OAuth session + passport (app-wide so req.isAuthenticated works on all routes)
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET || 'eventnexus-secret',
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            secure: false,
+            sameSite: 'lax',
+        },
+    })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // simple logger
 app.use((req, res, next) => {
@@ -79,3 +96,5 @@ const startServer = async () => {
 if (require.main === module) {
   startServer();
 }
+
+module.exports = { app, connectDB };
