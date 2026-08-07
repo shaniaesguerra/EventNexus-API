@@ -15,6 +15,15 @@ afterAll(async () => {
   await mongoose.connection.close();
 });
 
+const baseVenue = () => ({
+  name: 'Test Venue',
+  address: '123 Test St',
+  city: 'TestCity',
+  capacity: 100,
+  contactNumber: '+256700000000',
+  contactEmail: `venue.${Date.now()}@example.com`,
+});
+
 describe('Venues API', () => {
   describe('GET /venues', () => {
     it('returns a list of venues', async () => {
@@ -28,7 +37,7 @@ describe('Venues API', () => {
     it('creates a venue', async () => {
       const res = await request(app)
         .post('/venues')
-        .send({ name: 'Test Venue', address: '123 Test St', city: 'TestCity' });
+        .send(baseVenue());
 
       expect(res.status).toBe(201);
       expect(res.body._id).toBeDefined();
@@ -46,12 +55,12 @@ describe('Venues API', () => {
 
   describe('GET /venues/:id', () => {
     it('returns a venue by id', async () => {
-      const created = await Venue.create({ name: 'Get Me', address: '1 Get St', city: 'GetCity' });
+      const created = await Venue.create(baseVenue());
       createdIds.push(created._id);
 
       const res = await request(app).get(`/venues/${created._id}`);
       expect(res.status).toBe(200);
-      expect(res.body.name).toBe('Get Me');
+      expect(res.body.name).toBe('Test Venue');
     });
 
     it('returns 400 for an invalid id', async () => {
@@ -67,7 +76,7 @@ describe('Venues API', () => {
 
   describe('PUT /venues/:id', () => {
     it('updates a venue', async () => {
-      const created = await Venue.create({ name: 'Before', address: '1 Update St', city: 'UpdateCity' });
+      const created = await Venue.create(baseVenue());
       createdIds.push(created._id);
 
       const res = await request(app)
@@ -76,7 +85,7 @@ describe('Venues API', () => {
 
       expect(res.status).toBe(200);
       expect(res.body.name).toBe('After');
-      expect(res.body.address).toBe('1 Update St');
+      expect(res.body.address).toBe('123 Test St');
     });
 
     it('returns 400 for an invalid id', async () => {
@@ -94,7 +103,7 @@ describe('Venues API', () => {
 
   describe('DELETE /venues/:id', () => {
     it('deletes a venue', async () => {
-      const created = await Venue.create({ name: 'Delete Me', address: '1 Del St', city: 'DelCity' });
+      const created = await Venue.create(baseVenue());
 
       const res = await request(app).delete(`/venues/${created._id}`);
       expect(res.status).toBe(200);
