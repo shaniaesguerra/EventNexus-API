@@ -1,20 +1,14 @@
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
-const passport = require('passport');
-const GitHubStrategy = require('passport-github2').Strategy;
+
 const dotenv = require('dotenv');
 
 dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
 
 const router = express.Router();
 
-const {
-    GITHUB_CLIENT_ID,
-    GITHUB_CLIENT_SECRET,
-    SESSION_SECRET = 'eventnexus-secret',
-} = process.env;
-const GITHUB_CALLBACK_URL = process.env.GITHUB_CALLBACK_URL || process.env.CALLBACK_URL;
+
 
 router.use(
     session({
@@ -31,23 +25,6 @@ router.use(
 router.use(passport.initialize());
 router.use(passport.session());
 
-passport.serializeUser((user, done) => done(null, user));
-passport.deserializeUser((obj, done) => done(null, obj));
-
-const callbackURL = GITHUB_CALLBACK_URL || 'http://localhost:3000/auth/github/callback';
-
-if (GITHUB_CLIENT_ID && GITHUB_CLIENT_SECRET) {
-    passport.use(
-        new GitHubStrategy(
-            {
-                clientID: GITHUB_CLIENT_ID,
-                clientSecret: GITHUB_CLIENT_SECRET,
-                callbackURL,
-            },
-            (accessToken, refreshToken, profile, done) => done(null, profile)
-        )
-    );
-}
 
 function ensureOAuthConfigured(req, res, next) {
     if (!GITHUB_CLIENT_ID || !GITHUB_CLIENT_SECRET) {
