@@ -6,6 +6,7 @@ const {
   updateEvent,
   deleteEvent,
 } = require('../controllers/events');
+const authenticate = require('../middleware/authenticate');
 
 const router = express.Router();
 
@@ -25,7 +26,7 @@ router.get('/:id', (req, res) => {
   getEventById(req, res);
 });
 
-router.post('/', (req, res) => {
+router.post('/', authenticate, (req, res) => {
   //#swagger.tags = ['Events']
   //#swagger.summary = 'Create a new event'
   //#swagger.parameters['body'] = { "in": "body", "description": "Event payload", "required": true, "schema": { "$ref": "#/definitions/EventInput" } }
@@ -33,7 +34,7 @@ router.post('/', (req, res) => {
   createEvent(req, res);
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', authenticate, (req, res) => {
   //#swagger.tags = ['Events']
   //#swagger.summary = 'Update an event'
   //#swagger.parameters['id'] = { "in": "path", "description": "Event ID", "required": true, "type": "string" }
@@ -43,7 +44,7 @@ router.put('/:id', (req, res) => {
   updateEvent(req, res);
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authenticate, (req, res) => {
   //#swagger.tags = ['Events']
   //#swagger.summary = 'Delete an event'
   //#swagger.parameters['id'] = { "in": "path", "description": "Event ID", "required": true, "type": "string" }

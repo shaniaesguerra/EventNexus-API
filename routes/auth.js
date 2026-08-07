@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
+const passport = require('passport');
 const dotenv = require('dotenv');
 
 dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
@@ -9,7 +10,8 @@ const configurePassport = require('../config/passport').configurePassport;
 const { ensureOAuthConfigured } = require('../middleware/auth');
 const authController = require('../controllers/auth');
 
-const passport = configurePassport();
+configurePassport();
+
 const router = express.Router();
 
 router.use(
