@@ -101,6 +101,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -173,6 +176,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Event not found"
           }
@@ -199,6 +205,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "404": {
             "description": "Event not found"
@@ -260,6 +269,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -332,6 +344,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Venue not found"
           }
@@ -359,6 +374,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Venue not found"
           },
@@ -371,9 +389,6 @@
     "/auth/github": {
       "get": {
         "description": "",
-        "tags": [],
-        "description": "",
-        "parameters": [],
         "responses": {
           "500": {
             "description": "Internal Server Error"
@@ -381,11 +396,9 @@
         }
       }
     },
-    "/auth\r/github/callback": {
+    "/auth/github/callback": {
       "get": {
-        "tags": [],
         "description": "",
-        "parameters": [],
         "responses": {
           "500": {
             "description": "Internal Server Error"
@@ -396,8 +409,6 @@
     "/auth/github/failure": {
       "get": {
         "description": "",
-        "tags": [],
-        "parameters": [],
         "responses": {
           "401": {
             "description": "Unauthorized"
@@ -408,8 +419,6 @@
     "/auth/status": {
       "get": {
         "description": "",
-        "tags": [],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -420,8 +429,6 @@
     "/auth/logout": {
       "post": {
         "description": "",
-        "tags": [],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -480,6 +487,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -552,6 +562,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "User not found"
           }
@@ -579,6 +592,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "User not found"
           },
@@ -595,7 +611,6 @@
         ],
         "summary": "Get all registrations",
         "description": "",
-        "parameters": [],
         "responses": {
           "200": {
             "description": "List of registrations",
@@ -619,31 +634,16 @@
           "Registrations"
         ],
         "summary": "Create a new registration",
-        "description": "Registration payload",
+        "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "eventId": {
-                  "example": "any"
-                },
-                "quantity": {
-                  "example": "any"
-                },
-                "userId": {
-                  "example": "any"
-                },
-                "ticketType": {
-                  "example": "any"
-                },
-                "ticketStatus": {
-                  "example": "any"
-                }
-              },
+            "description": "Registration payload",
             "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegistrationInput"
+            }
           }
         ],
         "responses": {
@@ -716,27 +716,11 @@
           {
             "name": "body",
             "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "quantity": {
-                  "example": "any"
-                },
-                "eventId": {
-                  "example": "any"
-                },
-                "userId": {
-                  "example": "any"
-                },
-                "ticketType": {
-                  "example": "any"
-                },
-                "ticketStatus": {
-                  "example": "any"
-                }
-              }
             "description": "Updated registration payload",
             "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegistrationInput"
+            }
           }
         ],
         "responses": {
@@ -753,7 +737,7 @@
             "description": "Unauthorized"
           },
           "404": {
-            "description": "Not Found"
+            "description": "Registration not found"
           }
         }
       },
@@ -778,6 +762,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "404": {
             "description": "Registration not found"
