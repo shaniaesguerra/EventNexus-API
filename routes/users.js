@@ -6,6 +6,7 @@ const {
   updateUser,
   deleteUser
 } = require('../controllers/users');
+const authenticate = require('../middleware/authenticate');
 
 const router = express.Router();
 
@@ -25,7 +26,7 @@ router.get('/:id', (req, res) => {
   getUserById(req, res);
 });
 
-router.post('/', (req, res) => {
+router.post('/', authenticate, (req, res) => {
   //#swagger.tags = ['Users']
   //#swagger.summary = 'Create a new user'
   //#swagger.parameters['body'] = { "in": "body", "description": "User payload", "required": true, "schema": { "$ref": "#/definitions/UserInput" } }
@@ -34,7 +35,7 @@ router.post('/', (req, res) => {
   createUser(req, res);
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', authenticate, (req, res) => {
   //#swagger.tags = ['Users']
   //#swagger.summary = 'Update user'
   //#swagger.parameters['id'] = { "in": "path", "description": "User ID", "required": true, "type": "string" }
@@ -44,7 +45,7 @@ router.put('/:id', (req, res) => {
   updateUser(req, res);
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authenticate, (req, res) => {
   //#swagger.tags = ['Users']
   //#swagger.summary = 'Delete a user'
   //#swagger.parameters['id'] = { "in": "path", "description": "User ID", "required": true, "type": "string" }

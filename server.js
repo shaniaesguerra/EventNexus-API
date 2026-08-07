@@ -6,7 +6,6 @@ const fs = require('fs'); //filestream, replaces 'body-parser'
 const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
-const initPassport = require('./config/passport');
 const swaggerUi = require('swagger-ui-express');
 const connectDB = require('./config/db');
 
@@ -26,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 // CORS
 app.use(cors({ origin: '*' }));
 
-// session + passport (global, shared by all routers)
+// OAuth session + passport (app-wide so req.isAuthenticated works on all routes)
 app.use(
     session({
         secret: process.env.SESSION_SECRET || 'eventnexus-secret',
@@ -38,7 +37,6 @@ app.use(
         },
     })
 );
-
 app.use(passport.initialize());
 app.use(passport.session());
 
