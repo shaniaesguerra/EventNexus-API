@@ -26,6 +26,9 @@ beforeAll(async () => {
     name: 'Events Test Venue',
     address: '1 Event St',
     city: 'EventCity',
+    capacity: 100,
+    contactNumber: '+256700000000',
+    contactEmail: 'events.test.venue@example.com',
   });
   venueId = venue._id;
 

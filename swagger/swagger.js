@@ -26,7 +26,7 @@ const doc = {
       category: 'Technology',
       capacity: 500,
       age: 18,
-      price: 25.5,
+      price: '$25.5',
       status: 'published',
       createdAt: '2026-08-01T10:00:00.000Z',
       updatedAt: '2026-08-01T10:00:00.000Z',
@@ -41,7 +41,7 @@ const doc = {
       category: 'Technology',
       capacity: 500,
       age: 18,
-      price: 25.5,
+      price: '$25.5',
       status: 'published',
     },
     Venue: {

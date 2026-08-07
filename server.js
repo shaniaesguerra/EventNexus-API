@@ -11,6 +11,8 @@ const connectDB = require('./config/db');
 
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+initPassport();
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
