@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
-//Import Routes
+// Import Routes
 const eventRoutes = require('./events');
 const venueRoutes = require('./venues');
+const authRoutes = require('./auth');
 const userRoutes = require('./users');
 
 router.get('/', (req, res) => {
@@ -37,6 +38,7 @@ router.get('/login', (req, res) => {
 });
 router.use('/events', eventRoutes);
 router.use('/venues', venueRoutes);
+router.use('/auth', authRoutes);
 router.use('/users', userRoutes);
 
 module.exports = router;

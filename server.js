@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs'); //filestream, replaces 'body-parser'
+const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
 const connectDB = require('./config/db');
 
@@ -64,12 +65,14 @@ const startServer = async () => {
   const connected = await connectDB();
 
   if (!connected) {
-    console.error('Failed to connect to MongoDB. Server will not start.');
-    process.exit(1);
+    console.error('Failed to connect to MongoDB. Starting server without database connection.');
   }
 
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+    if (!connected) {
+      console.warn('Warning: MongoDB is not connected; DB-backed routes may fail.');
+    }
   });
 };
 
