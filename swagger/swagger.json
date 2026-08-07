@@ -368,6 +368,58 @@
         }
       }
     },
+    "/auth/github": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth\r/github/callback": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth/github/failure": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/status": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
     "/users/": {
       "get": {
         "tags": [
@@ -521,6 +573,169 @@
           },
           "404": {
             "description": "User not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/registrations/": {
+      "get": {
+        "tags": [
+          "Registrations"
+        ],
+        "summary": "Get all registrations",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "List of registrations",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Registration"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Registrations"
+        ],
+        "summary": "Create a new registration",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Registration payload",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegistrationInput"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Registration created",
+            "schema": {
+              "$ref": "#/definitions/Registration"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/registrations/{id}": {
+      "get": {
+        "tags": [
+          "Registrations"
+        ],
+        "summary": "Get registration by ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Registration ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Registration found",
+            "schema": {
+              "$ref": "#/definitions/Registration"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Registration not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Registrations"
+        ],
+        "summary": "Update a registration",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Registration ID"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Updated registration payload",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegistrationInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Registration updated",
+            "schema": {
+              "$ref": "#/definitions/Registration"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Registration not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Registrations"
+        ],
+        "summary": "Delete a registration",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Registration ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Registration deleted"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Registration not found"
           },
           "500": {
             "description": "Internal Server Error"
