@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
     + '2. Events Routes: <strong>/events</strong> <strong>/events/:id</strong><br>'
     + '3. Venues Routes: <strong>/venues</strong> <strong>/venues/:id</strong><br>'
     + '4. Users Routes: <strong>/users</strong> <strong>/users/:id</strong><br>'
+    + '5. Registrations Routes: <strong>/registrations</strong> <strong>/registrations/:id</strong><br>'
     + '</p>'
     + '<a href="/api-docs" style="display: inline-block; background-color: #4CAF50; color: white; padding: 14px 32px; border-radius: 6px; text-decoration: none; font-size: 16px; font-weight: bold; cursor: pointer; border: none; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">Click to View SWAGGER Documentation</a>'
     + '</div></body></html>'
