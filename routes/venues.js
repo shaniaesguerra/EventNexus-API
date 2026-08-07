@@ -12,7 +12,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   //#swagger.tags = ['Venues']
   //#swagger.summary = 'Get all venues'
-  //#swagger.responses[200] = {"description": "A list of venues","schema": { "type": "array", "items": { "$ref": "#/definitions/Venue" } } }
+  //#swagger.responses[200] = {"description": "A list of venues","schema": [ { "$ref": "#/definitions/Venue" } ]}
   getAllVenues(req, res);
 });
 
