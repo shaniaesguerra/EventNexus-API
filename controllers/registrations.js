@@ -159,6 +159,7 @@ const deleteRegistration = async (req, res) => {
 
         return res.json({
             message: 'Registration deleted successfully',
+            success: true
         });
     } catch (error) {
         return res.status(500).json({
