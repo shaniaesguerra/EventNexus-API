@@ -24,7 +24,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // CORS
-app.use(cors({ origin: '*' }));
+app.use(
+  cors({
+    origin: (process.env.RENDER_URL ? `https://${process.env.RENDER_URL}`: 'http://localhost:3000'),
+    credentials: true,
+  })
+);
 
 // OAuth session + passport (app-wide so req.isAuthenticated works on all routes)
 app.use(
@@ -33,7 +38,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            secure: false,
+            secure: process.env.NODE_ENV === 'production',
             sameSite: 'lax',
         },
     })

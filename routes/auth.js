@@ -1,33 +1,9 @@
-const path = require('path');
 const express = require('express');
-const session = require('express-session');
 const passport = require('passport');
-const dotenv = require('dotenv');
-
-dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
-
-const configurePassport = require('../config/passport').configurePassport;
 const { ensureOAuthConfigured } = require('../middleware/auth');
 const authController = require('../controllers/auth');
 
-configurePassport();
-
 const router = express.Router();
-
-router.use(
-    session({
-        secret: process.env.SESSION_SECRET || 'eventnexus-secret',
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            secure: false,
-            sameSite: 'lax',
-        },
-    })
-);
-
-router.use(passport.initialize());
-router.use(passport.session());
 
 // GitHub authentication route
 router.get('/github', ensureOAuthConfigured, passport.authenticate('github', { scope: ['user:email'] }));
