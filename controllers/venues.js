@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Venue = require('../models/Venue');
-
-const validateObjectId = (id) => mongoose.isValidObjectId(id);
+const { validateObjectId } = require('../middleware/validate');
 
 const getAllVenues = async (req, res) => {
   try {

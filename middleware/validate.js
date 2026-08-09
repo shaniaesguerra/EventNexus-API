@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
-const isValidObjectId = function (id) {
-    return mongoose.Types.ObjectId.isValid(id);
-};
+const validateObjectId = (id) => mongoose.isValidObjectId(id);
 
 const validateRegistration = (req, res, next) => {
     const {
@@ -76,6 +74,6 @@ const validateRegistration = (req, res, next) => {
 };
 
 module.exports = {
-    isValidObjectId,
+    validateObjectId,
     validateRegistration
 };
