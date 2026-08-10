@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { validateEventStatus } = require('../middleware/eventValidation');
 
 const eventSchema = new mongoose.Schema({
   title: { type: String, required: true },
@@ -15,6 +16,10 @@ const eventSchema = new mongoose.Schema({
     type: String,
     enum: ['Upcoming', 'Ongoing', 'Completed', 'Cancelled'],
     default: 'Upcoming',
+    validate: {
+      validator: validateEventStatus,
+      message: "Event Status must only include one of the four: 'Upcoming', 'Ongoing', 'Completed', 'Cancelled'"
+    }
   },
 }, { timestamps: true });
 
