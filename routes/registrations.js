@@ -12,7 +12,7 @@ const authenticate = require('../middleware/authenticate');
 
 const {
     validateRegistration
-} = require('../middleware/validate');
+} = require('../middleware/registrationValidation');
 
 const router = express.Router();
 

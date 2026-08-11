@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Event = require('../models/Event');
-const { validateObjectId } = require('../middleware/validate');
+const { validateObjectId } = require('../middleware/registrationValidation');
 
 const getAllEvents = async (req, res) => {
   console.log('getAllEvents called, mongoose readyState=', mongoose.connection.readyState, 'Event connection readyState=', Event.db.readyState);
