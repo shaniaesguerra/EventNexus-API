@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const Registration = require('../models/Registration');
 const Event = require('../models/Event');
-
-const validateObjectId = (id) => mongoose.isValidObjectId(id);
+const { validateObjectId } = require('../middleware/registrationValidation');
 
 const getAllRegistrations = async (req, res) => {
     try {
